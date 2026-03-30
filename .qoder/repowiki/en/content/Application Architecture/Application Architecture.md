@@ -14,7 +14,11 @@
 - [RecipeContext.jsx](file://client/src/context/RecipeContext.jsx)
 - [ProtectedRoute.jsx](file://client/src/components/common/ProtectedRoute.jsx)
 - [Navbar.jsx](file://client/src/components/common/Navbar.jsx)
+- [Footer.jsx](file://client/src/components/common/Footer.jsx)
 - [HomeFeed.jsx](file://client/src/pages/HomeFeed.jsx)
+- [Explore.jsx](file://client/src/pages/Explore.jsx)
+- [Login.jsx](file://client/src/pages/Login.jsx)
+- [Signup.jsx](file://client/src/pages/Signup.jsx)
 - [mockData.js](file://client/src/data/mockData.js)
 - [README.md](file://client/README.md)
 - [eslint.config.js](file://client/eslint.config.js)
@@ -22,12 +26,13 @@
 
 ## Update Summary
 **Changes Made**
-- Updated architecture overview to reflect modern React 19 application with comprehensive routing system
-- Added detailed context provider documentation covering Theme, Auth, and Recipe contexts
-- Enhanced component hierarchy analysis with layout components and protected routes
-- Expanded state management documentation with custom hooks and data persistence
-- Updated build system architecture with modern Vite configuration
-- Added comprehensive styling architecture with Tailwind CSS integration
+- Updated architecture overview to reflect modern React 19 application with comprehensive routing system using React Router DOM v7
+- Added detailed context provider documentation covering Theme, Auth, and Recipe contexts with localStorage persistence
+- Enhanced component hierarchy analysis with layout components (MainLayout, AuthLayout) and protected routes
+- Expanded state management documentation with custom hooks and data persistence patterns
+- Updated build system architecture with modern Vite configuration and React Fast Refresh
+- Added comprehensive styling architecture with Tailwind CSS integration and custom theme tokens
+- Documented complete page component structure including HomeFeed, Explore, Login, Signup, and recipe management pages
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -143,6 +148,9 @@ END
 subgraph "Component Hierarchy"
 NAVBAR["Navbar<br/>Navigation & Actions"]
 HOME_FEED["HomeFeed<br/>Recipe Feed"]
+EXPLORE["Explore<br/>Recipe Discovery"]
+LOGIN["Login<br/>Authentication"]
+SIGNUP["Signup<br/>Registration"]
 PAGES["Page Components<br/>Login/Signup/Profile"]
 COMPONENTS["Reusable Components<br/>Cards, Buttons, Forms"]
 END
@@ -158,8 +166,9 @@ APP --> AUTH_CTX
 APP --> RECIPE_CTX
 LAYOUTS --> NAVBAR
 LAYOUTS --> HOME_FEED
-HOME_FEED --> COMPONENTS
-PROTECTED --> PAGES
+LAYOUTS --> EXPLORE
+PROTECTED --> LOGIN
+PROTECTED --> SIGNUP
 THEME_CTX --> TAILWIND
 AUTH_CTX --> LOCAL_STORAGE
 RECIPE_CTX --> MOCK_DATA
@@ -173,7 +182,10 @@ RECIPE_CTX --> MOCK_DATA
 - [RecipeContext.jsx:1-194](file://client/src/context/RecipeContext.jsx#L1-L194)
 - [Navbar.jsx:1-206](file://client/src/components/common/Navbar.jsx#L1-L206)
 - [HomeFeed.jsx:1-96](file://client/src/pages/HomeFeed.jsx#L1-L96)
-- [mockData.js:1-363](file://client/src/data/mockData.js#L1-L363)
+- [Explore.jsx:1-133](file://client/src/pages/Explore.jsx#L1-L133)
+- [Login.jsx:1-218](file://client/src/pages/Login.jsx#L1-L218)
+- [Signup.jsx:1-316](file://client/src/pages/Signup.jsx#L1-L316)
+- [mockData.js:1-587](file://client/src/data/mockData.js#L1-L587)
 
 ## Context Provider System
 
@@ -238,6 +250,7 @@ The navigation system provides:
 
 **Section sources**
 - [Navbar.jsx:1-206](file://client/src/components/common/Navbar.jsx#L1-L206)
+- [Footer.jsx:1-33](file://client/src/components/common/Footer.jsx#L1-L33)
 
 ## Component Hierarchy and Data Flow
 
@@ -270,6 +283,9 @@ G --> S["Signup<br/>User Registration"]
 - [App.jsx:1-94](file://client/src/App.jsx#L1-L94)
 - [Navbar.jsx:1-206](file://client/src/components/common/Navbar.jsx#L1-L206)
 - [HomeFeed.jsx:1-96](file://client/src/pages/HomeFeed.jsx#L1-L96)
+- [Explore.jsx:1-133](file://client/src/pages/Explore.jsx#L1-L133)
+- [Login.jsx:1-218](file://client/src/pages/Login.jsx#L1-L218)
+- [Signup.jsx:1-316](file://client/src/pages/Signup.jsx#L1-L316)
 
 ### Data Flow Patterns
 The application implements several data flow patterns:
@@ -282,6 +298,7 @@ The application implements several data flow patterns:
 **Section sources**
 - [App.jsx:1-94](file://client/src/App.jsx#L1-L94)
 - [HomeFeed.jsx:1-96](file://client/src/pages/HomeFeed.jsx#L1-L96)
+- [Explore.jsx:1-133](file://client/src/pages/Explore.jsx#L1-L133)
 
 ## State Management Patterns
 
@@ -410,13 +427,15 @@ Flavora represents a modern React 19 application architecture that balances comp
 
 #### Page Components
 - **HomeFeed**: Personalized recipe feed based on user following
-- **Explore**: Public recipe discovery interface
+- **Explore**: Public recipe discovery interface with search and filters
 - **Profile**: User profile management and recipe collections
 - **CreateRecipe**: Recipe creation and editing interface
 - **RecipeDetailPage**: Individual recipe viewing and interaction
 - **Notifications**: User activity and engagement notifications
 - **Trending**: Popular recipes ranking
 - **About**: Application information and guidelines
+- **Login**: User authentication interface
+- **Signup**: User registration interface
 
 #### Common Components
 - **Navbar**: Primary navigation with authentication-aware menu items
@@ -463,7 +482,7 @@ Structured notifications for user engagement:
 - Related entity references for navigation
 
 **Section sources**
-- [mockData.js:1-363](file://client/src/data/mockData.js#L1-L363)
+- [mockData.js:1-587](file://client/src/data/mockData.js#L1-L587)
 - [RecipeContext.jsx:1-194](file://client/src/context/RecipeContext.jsx#L1-L194)
 
 ### Build and Deployment Configuration
