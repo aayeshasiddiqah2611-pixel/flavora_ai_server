@@ -172,6 +172,60 @@ const sampleRecipes = [
     ],
     alternativeIngredients: ['Tuna or yellowtail instead of salmon', 'Quinoa instead of rice'],
     tags: ['japanese', 'sushi', 'healthy', 'seafood']
+  },
+  {
+    title: 'Spaghetti Carbonara',
+    description: 'Classic Roman pasta with eggs, Pecorino Romano, guanciale, and black pepper. No cream needed!',
+    image: 'https://images.unsplash.com/photo-1612874742237-6526221588e3?w=800&h=600&fit=crop',
+    cuisine: 'Italian',
+    prepTime: 25,
+    servings: 4,
+    difficulty: 'Medium',
+    ingredients: [
+      { name: 'Spaghetti', amount: '400', unit: 'g' },
+      { name: 'Guanciale', amount: '150', unit: 'g' },
+      { name: 'Egg yolks', amount: '4', unit: 'large' },
+      { name: 'Pecorino Romano', amount: '1', unit: 'cup' },
+      { name: 'Black pepper', amount: '2', unit: 'tsp' },
+      { name: 'Salt', amount: '1', unit: 'tbsp' }
+    ],
+    instructions: [
+      { step: 1, title: 'Cook the pasta', detail: 'Bring a large pot of salted water to boil. Cook spaghetti until al dente, about 8-10 minutes. Reserve 1 cup of pasta water before draining.' },
+      { step: 2, title: 'Crisp the guanciale', detail: 'Cut guanciale into small cubes. Cook in a large skillet over medium heat until crispy and fat has rendered, about 7-8 minutes. Remove from heat.' },
+      { step: 3, title: 'Prepare the sauce', detail: 'In a bowl, whisk egg yolks with grated Pecorino Romano and plenty of freshly cracked black pepper. The mixture should be thick and paste-like.' },
+      { step: 4, title: 'Combine pasta and guanciale', detail: 'Add hot drained pasta to the skillet with guanciale. Toss quickly to coat with rendered fat. The pasta must be hot for the next step.' },
+      { step: 5, title: 'Add the sauce', detail: 'Working quickly, add the egg mixture to the pasta. Toss constantly, adding reserved pasta water a little at a time to create a creamy sauce. The residual heat cooks the eggs without scrambling them.' },
+      { step: 6, title: 'Serve immediately', detail: 'Divide among warm plates. Top with extra Pecorino and more black pepper. Serve immediately while hot and creamy.' }
+    ],
+    alternativeIngredients: ['Pancetta instead of guanciale', 'Parmesan instead of Pecorino'],
+    tags: ['italian', 'pasta', 'classic', 'comfort food']
+  },
+  {
+    title: 'Chicken Tikka Masala',
+    description: 'Grilled chicken chunks in a creamy spiced tomato sauce - a British-Indian favorite.',
+    image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=800&h=600&fit=crop',
+    cuisine: 'Indian',
+    prepTime: 60,
+    servings: 4,
+    difficulty: 'Medium',
+    ingredients: [
+      { name: 'Chicken breast', amount: '600', unit: 'g' },
+      { name: 'Yogurt', amount: '1', unit: 'cup' },
+      { name: 'Tomato puree', amount: '400', unit: 'g' },
+      { name: 'Heavy cream', amount: '0.5', unit: 'cup' },
+      { name: 'Garam masala', amount: '2', unit: 'tbsp' },
+      { name: 'Fenugreek leaves', amount: '2', unit: 'tbsp' },
+      { name: 'Ginger-garlic paste', amount: '2', unit: 'tbsp' },
+      { name: 'Kasuri methi', amount: '1', unit: 'tbsp' }
+    ],
+    instructions: [
+      { step: 1, title: 'Marinate chicken', detail: 'Cut chicken into chunks. Marinate in yogurt with spices for at least 30 minutes.' },
+      { step: 2, title: 'Grill tikka', detail: 'Thread chicken on skewers. Grill or broil until charred and cooked through, about 12 minutes.' },
+      { step: 3, title: 'Make sauce', detail: 'Sauté onions, add ginger-garlic paste, tomato puree, and spices. Simmer 15 minutes.' },
+      { step: 4, title: 'Finish', detail: 'Add cream and grilled chicken. Crush kasuri methi between palms and add. Simmer 5 minutes.' }
+    ],
+    alternativeIngredients: ['Paneer instead of chicken', 'Coconut milk instead of cream'],
+    tags: ['indian', 'curry', 'chicken', 'dinner']
   }
 ];
 
