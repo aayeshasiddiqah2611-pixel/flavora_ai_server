@@ -3,6 +3,8 @@
 <cite>
 **Referenced Files in This Document**
 - [mockData.js](file://client/src/data/mockData.js)
+- [additionalRecipes.js](file://client/src/data/additionalRecipes.js)
+- [seedData.js](file://server/utils/seedData.js)
 - [RecipeContext.jsx](file://client/src/context/RecipeContext.jsx)
 - [AuthContext.jsx](file://client/src/context/AuthContext.jsx)
 - [ThemeContext.jsx](file://client/src/context/ThemeContext.jsx)
@@ -21,10 +23,11 @@
 
 ## Update Summary
 **Changes Made**
-- Updated mock data structure to include comprehensive recipe data with structured ingredients and detailed nutritional information
-- Enhanced context management system with improved local storage persistence for recipes, users, and notifications
-- Expanded cuisine categories and recipe variety for better testing and development scenarios
-- Improved component integration with structured mock data for realistic user interactions
+- Major expansion of recipe database from 1000+ to 1495+ lines with comprehensive Japanese and American cuisine content
+- Added 315 lines of Japanese recipes including Tonkatsu, Tempura, Sukiyaki, Okonomiyaki, Gyoza, Unagi Don, Matcha Latte, Yakitori, Onigiri, and Shabu Shabu
+- Enhanced mock data structure with difficulty levels, tags, and comprehensive user interaction tracking
+- Expanded cuisine categories to include Japanese, American, Thai, Mexican, Chinese, Mediterranean, and French
+- Enhanced server seed data with structured recipe metadata for backend integration
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -46,7 +49,7 @@ The Mock Data System is a comprehensive frontend framework designed for a recipe
 
 The mock data system serves as both a development foundation and a demonstration of modern React patterns, showcasing how to build scalable, maintainable frontend applications with realistic data simulation and user interaction handling.
 
-**Updated** Enhanced with structured recipe data including detailed ingredients, cooking instructions, and comprehensive user interaction metrics for development and testing purposes.
+**Updated** Enhanced with comprehensive structured recipe data including detailed ingredients, cooking instructions, difficulty levels, tags, and comprehensive user interaction metrics for development and testing purposes across 1495+ lines of mock data.
 
 ## System Architecture
 
@@ -66,6 +69,8 @@ ThemeCtx[ThemeContext]
 end
 subgraph "Data Layer"
 MockData[Mock Data]
+AdditionalRecipes[Additional Recipes]
+SeedData[Server Seed Data]
 LocalStorage[Local Storage]
 end
 subgraph "External Dependencies"
@@ -80,6 +85,7 @@ UI --> ThemeCtx
 Pages --> UI
 Layouts --> UI
 RecipeCtx --> MockData
+RecipeCtx --> AdditionalRecipes
 RecipeCtx --> LocalStorage
 AuthCtx --> LocalStorage
 ThemeCtx --> LocalStorage
@@ -136,6 +142,8 @@ string_array likes
 json_array comments
 string_array saves
 json_array ratings
+string difficulty
+string_array tags
 datetime createdAt
 }
 COMMENT {
@@ -160,9 +168,9 @@ RECIPE ||--o{ RATING : receives
 **Diagram sources**
 - [mockData.js:1-363](file://client/src/data/mockData.js#L1-L363)
 
-The data model supports complex relationships including user following networks, recipe interactions, and social features. Each recipe contains detailed nutritional information, preparation steps, and community engagement metrics.
+The data model supports complex relationships including user following networks, recipe interactions, and social features. Each recipe contains detailed nutritional information, preparation steps, difficulty levels, tags, and community engagement metrics.
 
-**Updated** Enhanced recipe data structure now includes structured ingredient objects with name, amount, and unit fields, comprehensive cooking instructions, and detailed alternative ingredient options for dietary restrictions.
+**Updated** Enhanced recipe data structure now includes structured ingredient objects with name, amount, and unit fields, comprehensive cooking instructions, difficulty levels, tags, and detailed alternative ingredient options for dietary restrictions.
 
 **Section sources**
 - [mockData.js:1-363](file://client/src/data/mockData.js#L1-L363)
@@ -302,7 +310,7 @@ ProtectedRoute --> Navbar
 
 The component hierarchy promotes code reuse and maintains consistent user experience across the application.
 
-**Updated** Enhanced component integration with structured mock data, providing realistic recipe information display and user interaction handling for development and testing scenarios.
+**Updated** Enhanced component integration with structured mock data, providing realistic recipe information display and user interaction handling for development and testing scenarios across the expanded recipe database.
 
 **Section sources**
 - [HomeFeed.jsx:1-96](file://client/src/pages/HomeFeed.jsx#L1-L96)
@@ -341,7 +349,7 @@ RecipeCard-->>User : Visual feedback (animated heart)
 
 The interactive system includes real-time state updates, visual feedback animations, and cross-user notifications that enhance the social aspect of recipe sharing.
 
-**Updated** Enhanced interactive features with improved notification system and user interaction handling, leveraging the structured mock data for realistic social media experiences.
+**Updated** Enhanced interactive features with improved notification system and user interaction handling, leveraging the structured mock data for realistic social media experiences across the expanded recipe database.
 
 **Section sources**
 - [LikeButton.jsx:1-73](file://client/src/components/interactions/LikeButton.jsx#L1-L73)
@@ -360,17 +368,29 @@ CategoryFilter --> SortOption["Sort Option"]
 SortOption --> FilterLogic{"Filter Logic"}
 FilterLogic --> |Search Query| TextSearch["Text-based Search"]
 FilterLogic --> |Category| CategorySearch["Category Filter"]
+FilterLogic --> |Difficulty| DifficultyFilter["Difficulty Level Filter"]
+FilterLogic --> |Tags| TagFilter["Tag-based Filter"]
 FilterLogic --> |Both| CombinedSearch["Combined Search"]
 TextSearch --> IngredientSearch["Ingredient Matching"]
 CategorySearch --> CuisineFilter["Cuisine Type Filter"]
+DifficultyFilter --> DifficultySort["Difficulty-based Sorting"]
+TagFilter --> TagSort["Tag-based Sorting"]
 CombinedSearch --> IngredientSearch
 CombinedSearch --> CuisineFilter
+CombinedSearch --> DifficultySort
+CombinedSearch --> TagSort
 IngredientSearch --> SortLogic{"Sort Logic"}
 CuisineFilter --> SortLogic
+DifficultySort --> SortLogic
+TagSort --> SortLogic
 SortLogic --> |Popular| PopularitySort["Likes-based Sorting"]
 SortLogic --> |Latest| DateSort["Date-based Sorting"]
+SortLogic --> |Difficulty| DifficultySort
+SortLogic --> |Tags| TagSort
 PopularitySort --> Results["Filtered Results"]
 DateSort --> Results
+DifficultySort --> Results
+TagSort --> Results
 Results --> Render["Render Recipe Grid"]
 Render --> End([Display Results])
 ```
@@ -379,9 +399,9 @@ Render --> End([Display Results])
 - [Explore.jsx:15-44](file://client/src/pages/Explore.jsx#L15-L44)
 - [CategoryFilter.jsx:4-27](file://client/src/components/search/CategoryFilter.jsx#L4-L27)
 
-The filtering system supports multi-criteria searches across recipe titles, descriptions, ingredients, and cuisines, providing users with precise recipe discovery options.
+The filtering system supports multi-criteria searches across recipe titles, descriptions, ingredients, cuisines, difficulty levels, and tags, providing users with precise recipe discovery options.
 
-**Updated** Enhanced search functionality with structured ingredient matching and comprehensive recipe filtering based on the detailed mock data structure.
+**Updated** Enhanced search functionality with structured ingredient matching, comprehensive recipe filtering based on the detailed mock data structure, and support for difficulty levels and tags.
 
 **Section sources**
 - [Explore.jsx:1-133](file://client/src/pages/Explore.jsx#L1-L133)
@@ -412,7 +432,7 @@ PersistData --> ComponentRender
 
 The persistence system ensures data consistency while providing fallback mechanisms when local storage is unavailable.
 
-**Updated** Enhanced local storage persistence with improved data serialization and deserialization for recipes, users, and notifications, ensuring reliable state management across application sessions.
+**Updated** Enhanced local storage persistence with improved data serialization and deserialization for recipes, users, and notifications, ensuring reliable state management across application sessions with the expanded dataset.
 
 **Section sources**
 - [RecipeContext.jsx:7-32](file://client/src/context/RecipeContext.jsx#L7-L32)
@@ -459,23 +479,26 @@ The mock data system is optimized for performance through several key strategies
 - **Lazy Loading**: Components only load data when needed
 - **State Optimization**: Context providers minimize unnecessary re-renders
 - **Efficient Filtering**: Memoized computations prevent redundant calculations
+- **Data Normalization**: Expanded dataset is efficiently managed with structured arrays
 
 ### Rendering Optimization
 - **Component Caching**: Frequently used components utilize React.memo patterns
 - **Virtual Scrolling**: Large recipe lists use efficient rendering techniques
 - **Animation Performance**: Framer Motion animations are hardware-accelerated
+- **Optimized Rendering**: 1495+ lines of mock data are efficiently processed
 
 ### Data Efficiency
 - **Normalized Data**: Related data is structured to minimize duplication
 - **Selective Loading**: Only required data is loaded into memory
 - **Batch Operations**: Multiple state updates are batched for efficiency
+- **Structured Arrays**: Enhanced data structure reduces processing overhead
 
 ### Network Simulation
 - **Local Processing**: All data operations occur locally without network overhead
 - **Realistic Delays**: Simulated API delays provide authentic user experience
 - **Error Handling**: Graceful degradation prevents application crashes
 
-**Updated** Enhanced performance considerations with improved data structure efficiency and optimized component rendering for the comprehensive mock data system.
+**Updated** Enhanced performance considerations with improved data structure efficiency and optimized component rendering for the comprehensive mock data system with 1495+ lines of expanded recipe database.
 
 ## Troubleshooting Guide
 
@@ -492,7 +515,7 @@ The mock data system is optimized for performance through several key strategies
 - **Debugging**: Check localStorage keys and data serialization
 
 **Performance Issues**
-- **Issue**: Slow rendering with large recipe collections
+- **Issue**: Slow rendering with large recipe collections (1495+ lines)
 - **Solution**: Implement virtualization and pagination for large datasets
 - **Optimization**: Use React.memo and useMemo for expensive computations
 
@@ -519,10 +542,12 @@ Key achievements include:
 
 - **Complete Feature Coverage**: Full social media functionality with user interactions, recipe sharing, and community features
 - **Scalable Architecture**: Well-structured codebase that can accommodate future feature additions
-- **Performance Optimization**: Efficient data handling and rendering strategies
+- **Performance Optimization**: Efficient data handling and rendering strategies for 1495+ lines of mock data
 - **Developer Experience**: Clear component APIs and comprehensive documentation
 - **User Experience**: Intuitive interface with smooth interactions and responsive design
+- **Comprehensive Cuisine Coverage**: Expanded database with Japanese, American, Thai, Mexican, Chinese, Mediterranean, and French cuisines
+- **Enhanced Metadata**: Structured recipe data with difficulty levels, tags, and comprehensive interaction tracking
 
 The system serves as both a functional prototype and a learning resource for modern React development practices, showcasing how to build maintainable, scalable frontend applications with realistic data simulation and user interaction handling.
 
-**Updated** Enhanced with comprehensive structured recipe data, improved context management, and robust local storage persistence, making it an ideal foundation for development, testing, and demonstration of modern React applications with realistic social media functionality.
+**Updated** Enhanced with comprehensive structured recipe data, improved context management, robust local storage persistence, and extensive Japanese and American cuisine content, making it an ideal foundation for development, testing, and demonstration of modern React applications with realistic social media functionality.
