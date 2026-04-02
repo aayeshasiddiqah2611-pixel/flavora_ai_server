@@ -460,6 +460,34 @@ const sampleRecipes = [
     tags: ['american', 'burger', 'beef', 'classic']
   },
   {
+    title: 'Philly Cheese Steak',
+    description: 'Authentic Philadelphia cheesesteak with thinly sliced ribeye, caramelized onions, and melted provolone on a hoagie roll.',
+    image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=800&h=600&fit=crop',
+    cuisine: 'American',
+    prepTime: 30,
+    servings: 4,
+    difficulty: 'Medium',
+    ingredients: [
+      { name: 'Ribeye steak', amount: '500', unit: 'g' },
+      { name: 'Hoagie rolls', amount: '4', unit: 'pieces' },
+      { name: 'Provolone cheese', amount: '200', unit: 'g' },
+      { name: 'Onions', amount: '2', unit: 'large' },
+      { name: 'Bell peppers', amount: '2', unit: 'medium' },
+      { name: 'Mushrooms', amount: '150', unit: 'g' },
+      { name: 'Oil', amount: '2', unit: 'tbsp' },
+      { name: 'Salt and pepper', amount: '1', unit: 'tsp' }
+    ],
+    instructions: [
+      { step: 1, title: 'Prepare the meat', detail: 'Partially freeze ribeye for easier slicing. Slice paper-thin against the grain using a sharp knife.' },
+      { step: 2, title: 'Caramelize vegetables', detail: 'Sauté sliced onions, bell peppers, and mushrooms in oil over medium heat until soft and golden, about 10-12 minutes.' },
+      { step: 3, title: 'Cook the steak', detail: 'Heat a griddle or large skillet over high heat. Add sliced ribeye and cook quickly, breaking it up as it cooks, about 3-4 minutes.' },
+      { step: 4, title: 'Add cheese', detail: 'Mix vegetables with the cooked steak. Top with provolone cheese slices and cover briefly to melt.' },
+      { step: 5, title: 'Assemble sandwiches', detail: 'Split hoagie rolls lengthwise. Pile the cheesy steak mixture generously into each roll. Serve immediately while hot and gooey.' }
+    ],
+    alternativeIngredients: ['Cheez Whiz instead of provolone', 'American cheese for classic version', 'Add jalapeños for heat'],
+    tags: ['american', 'sandwich', 'steak', 'philadelphia', 'cheese']
+  },
+  {
     title: 'Pad Thai',
     description: 'Thailand\'s famous stir-fried rice noodles with shrimp, tofu, peanuts, and tamarind.',
     image: 'https://images.unsplash.com/photo-1559314809-0d155014e29e?w=800&h=600&fit=crop',
@@ -1224,6 +1252,261 @@ const sampleRecipes = [
     ],
     alternativeIngredients: ['Add bacon or lobster', 'Mix of cheeses'],
     tags: ['american', 'pasta', 'comfort food', 'cheese']
+  },
+  // JAPANESE RECIPES
+  {
+    title: 'Tonkatsu',
+    description: 'Crispy breaded pork cutlet served with tangy tonkatsu sauce and shredded cabbage.',
+    image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800&h=600&fit=crop',
+    cuisine: 'Japanese',
+    prepTime: 40,
+    servings: 2,
+    difficulty: 'Easy',
+    ingredients: [
+      { name: 'Pork loin', amount: '2', unit: 'pieces' },
+      { name: 'Panko breadcrumbs', amount: '2', unit: 'cups' },
+      { name: 'Flour', amount: '0.5', unit: 'cup' },
+      { name: 'Eggs', amount: '2', unit: 'large' },
+      { name: 'Cabbage', amount: '0.5', unit: 'head' },
+      { name: 'Tonkatsu sauce', amount: '0.25', unit: 'cup' }
+    ],
+    instructions: [
+      { step: 1, title: 'Prepare pork', detail: 'Pound pork cutlets to even thickness. Season with salt and pepper.' },
+      { step: 2, title: 'Dredge', detail: 'Dredge in flour, dip in beaten eggs, then coat thickly with panko.' },
+      { step: 3, title: 'Fry', detail: 'Deep fry at 340°F for 3-4 minutes per side until golden and cooked through.' },
+      { step: 4, title: 'Serve', detail: 'Slice into strips. Serve over shredded cabbage with tonkatsu sauce.' }
+    ],
+    alternativeIngredients: ['Chicken breast instead of pork', 'Regular breadcrumbs'],
+    tags: ['japanese', 'pork', 'fried', 'breaded']
+  },
+  {
+    title: 'Tempura',
+    description: 'Light, crispy battered seafood and vegetables - the art of Japanese frying.',
+    image: 'https://images.unsplash.com/photo-1615361200141-f45040f367be?w=800&h=600&fit=crop',
+    cuisine: 'Japanese',
+    prepTime: 30,
+    servings: 4,
+    difficulty: 'Medium',
+    ingredients: [
+      { name: 'Shrimp', amount: '12', unit: 'pieces' },
+      { name: 'Sweet potato', amount: '1', unit: 'medium' },
+      { name: 'Eggplant', amount: '1', unit: 'small' },
+      { name: 'Tempura flour', amount: '1', unit: 'cup' },
+      { name: 'Ice water', amount: '1', unit: 'cup' },
+      { name: 'Dashi', amount: '0.5', unit: 'cup' }
+    ],
+    instructions: [
+      { step: 1, title: 'Prep ingredients', detail: 'Peel and slice vegetables. Butterfly shrimp but leave tails on.' },
+      { step: 2, title: 'Make batter', detail: 'Mix tempura flour with ice-cold water. Batter should be lumpy - do not overmix.' },
+      { step: 3, title: 'Fry', detail: 'Dip ingredients in batter. Fry at 340°F until light golden and crispy, about 2-3 minutes.' },
+      { step: 4, title: 'Serve', detail: 'Drain on rack. Serve immediately with tentsuyu dipping sauce made from dashi, soy, and mirin.' }
+    ],
+    alternativeIngredients: ['Asparagus and mushrooms', 'Squid and scallops'],
+    tags: ['japanese', 'seafood', 'fried', 'light']
+  },
+  {
+    title: 'Sukiyaki',
+    description: 'Sweet-savory hot pot with thinly sliced beef, tofu, and vegetables cooked at the table.',
+    image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&h=600&fit=crop',
+    cuisine: 'Japanese',
+    prepTime: 45,
+    servings: 4,
+    difficulty: 'Medium',
+    ingredients: [
+      { name: 'Thin beef slices', amount: '500', unit: 'g' },
+      { name: 'Tofu', amount: '1', unit: 'block' },
+      { name: 'Napa cabbage', amount: '0.5', unit: 'head' },
+      { name: 'Shiitake mushrooms', amount: '8', unit: 'pieces' },
+      { name: 'Soy sauce', amount: '0.5', unit: 'cup' },
+      { name: 'Mirin', amount: '0.5', unit: 'cup' },
+      { name: 'Sugar', amount: '3', unit: 'tbsp' },
+      { name: 'Eggs', amount: '4', unit: 'large' }
+    ],
+    instructions: [
+      { step: 1, title: 'Prep ingredients', detail: 'Cut tofu, vegetables, and mushrooms into bite-sized pieces. Arrange on platter.' },
+      { step: 2, title: 'Make warishita', detail: 'Mix soy sauce, mirin, sugar, and dashi. This is the sukiyaki broth.' },
+      { step: 3, title: 'Cook at table', detail: 'Heat cast iron pot. Sauté some beef first. Add warishita and remaining ingredients.' },
+      { step: 4, title: 'Dip in egg', detail: 'Dip cooked beef and vegetables into beaten raw egg before eating - this is traditional!' }
+    ],
+    alternativeIngredients: ['Chicken instead of beef', 'Udon noodles added at end'],
+    tags: ['japanese', 'hot pot', 'beef', 'traditional']
+  },
+  {
+    title: 'Okonomiyaki',
+    description: 'Savory Japanese pancake loaded with cabbage, pork, and topped with special sauce and mayo.',
+    image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800&h=600&fit=crop',
+    cuisine: 'Japanese',
+    prepTime: 35,
+    servings: 2,
+    difficulty: 'Medium',
+    ingredients: [
+      { name: 'Cabbage', amount: '2', unit: 'cups' },
+      { name: 'Flour', amount: '0.75', unit: 'cup' },
+      { name: 'Eggs', amount: '2', unit: 'large' },
+      { name: 'Pork belly', amount: '100', unit: 'g' },
+      { name: 'Dashi', amount: '0.75', unit: 'cup' },
+      { name: 'Okonomiyaki sauce', amount: '3', unit: 'tbsp' },
+      { name: 'Kewpie mayo', amount: '2', unit: 'tbsp' },
+      { name: 'Bonito flakes', amount: '1', unit: 'handful' }
+    ],
+    instructions: [
+      { step: 1, title: 'Make batter', detail: 'Mix flour and dashi. Add eggs and shredded cabbage. Mix until just combined.' },
+      { step: 2, title: 'Cook', detail: 'Pour half batter onto hot oiled griddle. Top with pork slices. Cook 4 minutes, flip, cook 4 more.' },
+      { step: 3, title: 'Top', detail: 'Drizzle with okonomiyaki sauce and Kewpie mayo in decorative pattern.' },
+      { step: 4, title: 'Garnish', detail: 'Top with bonito flakes (they will dance from the heat!) and aonori seaweed.' }
+    ],
+    alternativeIngredients: ['Shrimp instead of pork', 'Gluten-free flour blend'],
+    tags: ['japanese', 'pancake', 'savory', 'street food']
+  },
+  {
+    title: 'Gyoza',
+    description: 'Pan-fried Japanese dumplings with juicy pork filling and crispy bottoms.',
+    image: 'https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=800&h=600&fit=crop',
+    cuisine: 'Japanese',
+    prepTime: 60,
+    servings: 24,
+    difficulty: 'Medium',
+    ingredients: [
+      { name: 'Ground pork', amount: '300', unit: 'g' },
+      { name: 'Gyoza wrappers', amount: '24', unit: 'pieces' },
+      { name: 'Cabbage', amount: '1', unit: 'cup' },
+      { name: 'Garlic chives', amount: '0.5', unit: 'cup' },
+      { name: 'Soy sauce', amount: '2', unit: 'tbsp' },
+      { name: 'Sesame oil', amount: '1', unit: 'tbsp' }
+    ],
+    instructions: [
+      { step: 1, title: 'Make filling', detail: 'Mix ground pork with minced cabbage, chives, ginger, soy sauce, and sesame oil.' },
+      { step: 2, title: 'Wrap', detail: 'Place filling in center of wrapper. Moisten edges, fold in half, and pleat one side.' },
+      { step: 3, title: 'Pan fry', detail: 'Heat oil in skillet. Arrange gyoza flat side down. Cook until bottoms are golden.' },
+      { step: 4, title: 'Steam', detail: 'Add 1/4 cup water and immediately cover. Steam 3-4 minutes until cooked through. Uncover and crisp bottoms again.' }
+    ],
+    alternativeIngredients: ['Chicken or vegetable filling', 'Homemade wrappers'],
+    tags: ['japanese', 'dumplings', 'pork', 'pan-fried']
+  },
+  {
+    title: 'Unagi Don',
+    description: 'Grilled eel glazed with sweet soy sauce over steamed rice - a Japanese delicacy.',
+    image: 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=800&h=600&fit=crop',
+    cuisine: 'Japanese',
+    prepTime: 25,
+    servings: 2,
+    difficulty: 'Medium',
+    ingredients: [
+      { name: 'Unagi fillets', amount: '2', unit: 'pieces' },
+      { name: 'Sushi rice', amount: '2', unit: 'cups' },
+      { name: 'Unagi sauce', amount: '0.25', unit: 'cup' },
+      { name: 'Cucumber', amount: '0.5', unit: 'piece' },
+      { name: 'Sansho pepper', amount: '1', unit: 'tsp' },
+      { name: 'Pickled ginger', amount: '2', unit: 'tbsp' }
+    ],
+    instructions: [
+      { step: 1, title: 'Cook rice', detail: 'Prepare sushi rice with seasoned vinegar. Keep warm.' },
+      { step: 2, title: 'Grill unagi', detail: 'Brush unagi with sauce. Grill or broil for 3-4 minutes until glazed and heated through.' },
+      { step: 3, title: 'Assemble', detail: 'Pack rice into bowls. Arrange unagi on top. Brush with more sauce.' },
+      { step: 4, title: 'Garnish', detail: 'Sprinkle with sansho pepper (Japanese pepper). Serve with pickled ginger and cucumber.' }
+    ],
+    alternativeIngredients: ['Teriyaki salmon instead of unagi', 'Brown rice instead of white'],
+    tags: ['japanese', 'eel', 'rice bowl', 'delicacy']
+  },
+  {
+    title: 'Matcha Latte',
+    description: 'Creamy green tea latte with frothy milk and authentic Japanese matcha.',
+    image: 'https://images.unsplash.com/photo-1515823662972-da6a2e4d3002?w=800&h=600&fit=crop',
+    cuisine: 'Japanese',
+    prepTime: 10,
+    servings: 1,
+    difficulty: 'Easy',
+    ingredients: [
+      { name: 'Matcha powder', amount: '1.5', unit: 'tsp' },
+      { name: 'Hot water', amount: '2', unit: 'tbsp' },
+      { name: 'Milk', amount: '1', unit: 'cup' },
+      { name: 'Honey', amount: '1', unit: 'tsp' }
+    ],
+    instructions: [
+      { step: 1, title: 'Sift matcha', detail: 'Sift matcha powder into bowl to remove lumps. This ensures smooth texture.' },
+      { step: 2, title: 'Whisk', detail: 'Add hot water (not boiling). Whisk vigorously in M-shape until frothy.' },
+      { step: 3, title: 'Froth milk', detail: 'Heat and froth milk. Pour over matcha, holding back foam with spoon.' },
+      { step: 4, title: 'Finish', detail: 'Spoon foam on top. Sweeten with honey if desired. Serve immediately.' }
+    ],
+    alternativeIngredients: ['Oat milk instead of dairy', 'Maple syrup instead of honey'],
+    tags: ['japanese', 'matcha', 'latte', 'beverage']
+  },
+  {
+    title: 'Yakitori',
+    description: 'Grilled chicken skewers with sweet-savory tare sauce - perfect izakaya food.',
+    image: 'https://images.unsplash.com/photo-1529563021894-ef469d22f271?w=800&h=600&fit=crop',
+    cuisine: 'Japanese',
+    prepTime: 45,
+    servings: 4,
+    difficulty: 'Medium',
+    ingredients: [
+      { name: 'Chicken thighs', amount: '500', unit: 'g' },
+      { name: 'Green onions', amount: '4', unit: 'stalks' },
+      { name: 'Soy sauce', amount: '0.5', unit: 'cup' },
+      { name: 'Mirin', amount: '0.5', unit: 'cup' },
+      { name: 'Sake', amount: '0.25', unit: 'cup' },
+      { name: 'Sugar', amount: '3', unit: 'tbsp' },
+      { name: 'Bamboo skewers', amount: '8', unit: 'pieces' }
+    ],
+    instructions: [
+      { step: 1, title: 'Make tare sauce', detail: 'Simmer soy sauce, mirin, sake, and sugar until reduced by half and syrupy. Cool.' },
+      { step: 2, title: 'Prep chicken', detail: 'Cut chicken into bite-sized pieces. Cut green onions into 1-inch lengths.' },
+      { step: 3, title: 'Skewer', detail: 'Alternate chicken and green onions on soaked bamboo skewers.' },
+      { step: 4, title: 'Grill', detail: 'Grill over medium heat, turning and basting with tare sauce, until cooked through and glazed.' }
+    ],
+    alternativeIngredients: ['Chicken breast instead of thighs', 'Metal skewers instead of bamboo'],
+    tags: ['japanese', 'yakitori', 'grilled', 'skewers']
+  },
+  {
+    title: 'Onigiri',
+    description: 'Japanese rice balls filled with savory ingredients and wrapped in nori - perfect for bento.',
+    image: 'https://images.unsplash.com/photo-1626082927829-5a7c047bcf53?w=800&h=600&fit=crop',
+    cuisine: 'Japanese',
+    prepTime: 30,
+    servings: 6,
+    difficulty: 'Easy',
+    ingredients: [
+      { name: 'Sushi rice', amount: '2', unit: 'cups' },
+      { name: 'Nori sheets', amount: '3', unit: 'pieces' },
+      { name: 'Salt', amount: '1', unit: 'tsp' },
+      { name: 'Salmon filling', amount: '0.5', unit: 'cup' },
+      { name: 'Umeboshi', amount: '3', unit: 'pieces' },
+      { name: 'Tuna mayo', amount: '0.5', unit: 'cup' }
+    ],
+    instructions: [
+      { step: 1, title: 'Cook rice', detail: 'Cook sushi rice and season with rice vinegar while warm. Let cool slightly.' },
+      { step: 2, title: 'Wet hands', detail: 'Keep a bowl of salted water nearby. Wet hands before shaping to prevent sticking.' },
+      { step: 3, title: 'Shape onigiri', detail: 'Take portion of rice, make indent, add filling, close and shape into triangle.' },
+      { step: 4, title: 'Wrap', detail: 'Wrap bottom with strip of nori just before serving to keep it crispy.' }
+    ],
+    alternativeIngredients: ['Pickled plum filling', 'Grilled salted salmon'],
+    tags: ['japanese', 'rice ball', 'bento', 'portable']
+  },
+  {
+    title: 'Shabu Shabu',
+    description: 'Japanese hot pot with thinly sliced beef and vegetables swished in dashi broth.',
+    image: 'https://images.unsplash.com/photo-1594970426224-a3862e7d74d7?w=800&h=600&fit=crop',
+    cuisine: 'Japanese',
+    prepTime: 30,
+    servings: 4,
+    difficulty: 'Medium',
+    ingredients: [
+      { name: 'Thin beef slices', amount: '500', unit: 'g' },
+      { name: 'Napa cabbage', amount: '0.5', unit: 'head' },
+      { name: 'Enoki mushrooms', amount: '2', unit: 'packs' },
+      { name: 'Tofu', amount: '1', unit: 'block' },
+      { name: 'Dashi', amount: '6', unit: 'cups' },
+      { name: 'Ponzu sauce', amount: '0.5', unit: 'cup' },
+      { name: 'Goma dare', amount: '0.5', unit: 'cup' }
+    ],
+    instructions: [
+      { step: 1, title: 'Prep ingredients', detail: 'Arrange sliced beef and vegetables on platters. Cut tofu into cubes.' },
+      { step: 2, title: 'Heat broth', detail: 'Heat dashi in hot pot at the table. Add kombu for extra umami.' },
+      { step: 3, title: 'Swish and cook', detail: 'Swish beef slices in hot broth for 10-20 seconds until just cooked. Cook vegetables until tender.' },
+      { step: 4, title: 'Dip and eat', detail: 'Dip cooked ingredients in ponzu or sesame sauce. Add rice or noodles at the end.' }
+    ],
+    alternativeIngredients: ['Pork slices instead of beef', 'Chicken meatballs'],
+    tags: ['japanese', 'hot pot', 'beef', 'interactive']
   }
 ];
 
@@ -1250,7 +1533,14 @@ const seedDatabase = async () => {
     console.log('Creating sample recipes...');
     for (let i = 0; i < sampleRecipes.length; i++) {
       const recipeData = sampleRecipes[i];
-      const user = createdUsers[i % createdUsers.length];
+      
+      // Assign Philly Cheese Steak specifically to James Wilson (index 3)
+      let user;
+      if (recipeData.title === 'Philly Cheese Steak') {
+        user = createdUsers[3]; // James Wilson
+      } else {
+        user = createdUsers[i % createdUsers.length];
+      }
       
       const recipe = await Recipe.create({
         ...recipeData,

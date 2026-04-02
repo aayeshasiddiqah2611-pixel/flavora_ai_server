@@ -1,23 +1,65 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { mockRecipes, mockUsers } from '../data/mockData';
+import { api } from '../services/api';
 
 const RecipeContext = createContext();
 
 export function RecipeProvider({ children }) {
-  const [recipes, setRecipes] = useState(() => {
-    const stored = localStorage.getItem('flavora_recipes');
-    return stored ? JSON.parse(stored) : mockRecipes;
-  });
+  const [recipes, setRecipes] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
   
-  const [users, setUsers] = useState(() => {
-    const stored = localStorage.getItem('flavora_users');
-    return stored ? JSON.parse(stored) : mockUsers;
-  });
-
   const [notifications, setNotifications] = useState(() => {
     const stored = localStorage.getItem('flavora_notifications');
     return stored ? JSON.parse(stored) : [];
   });
+
+  // Fetch recipes and users from backend on mount
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        // Fetch recipes from backend
+        const recipesResponse = await api.getRecipes({ limit: 50 });
+        if (recipesResponse.success && recipesResponse.data) {
+          // Transform backend recipe format to frontend format
+          const formattedRecipes = recipesResponse.data.map(recipe => ({
+            id: recipe._id,
+            userId: recipe.user._id,
+            title: recipe.title,
+            description: recipe.description,
+            image: recipe.image,
+            cuisine: recipe.cuisine,
+            prepTime: recipe.prepTime,
+            servings: recipe.servings,
+            ingredients: recipe.ingredients,
+            instructions: recipe.instructions,
+            alternativeIngredients: recipe.alternativeIngredients || [],
+            likes: recipe.likes || [],
+            comments: recipe.comments || [],
+            saves: recipe.saves || [],
+            ratings: recipe.ratings || [],
+            tags: recipe.tags || [],
+            difficulty: recipe.difficulty,
+            createdAt: recipe.createdAt,
+          }));
+          setRecipes(formattedRecipes);
+        }
+        
+        // For now, use mock users (backend integration can be enhanced later)
+        setUsers(mockUsers);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching recipes:', error);
+        // Fallback to mock data if API fails
+        setRecipes(mockRecipes);
+        setUsers(mockUsers);
+        setLoading(false);
+      }
+    };
+    
+    fetchData();
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('flavora_recipes', JSON.stringify(recipes));
